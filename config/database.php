@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '10.9.2.57'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'dispatching'),
-            'username' => env('DB_USERNAME', 'wuliu'),
-            'password' => env('DB_PASSWORD', '123456'),
+            'host' => env('DB_HOST', '10.30.42.33'),
+            'port' => env('DB_PORT', '13306'),
+            'database' => env('DB_DATABASE', 'dispatching_test'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', 'frt3233Rt57'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
