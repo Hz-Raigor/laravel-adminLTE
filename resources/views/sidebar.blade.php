@@ -42,6 +42,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/admin/order">运单管理</a></li>
+                        <li><a href="/admin/orderBatch">批次管理</a></li>
                     </ul>
                 </li>
                 <li><a href="/admin/guoyao"><i class="fa fa-book"></i> <span>国药统计</span></a></li>

@@ -3,26 +3,36 @@
 namespace App\Http\Services;
 
 use App\Http\Repositories\OrderRepository;
+use Illuminate\Support\Facades\DB;
+use App\Exceptions\CustomException;
 
 class OrderService extends BaseService
 {
 
-    public $orderRepository;
     public function __construct(OrderRepository $orderRepository)
     {
         //parent::__construct();
-        $this->orderRepository = $orderRepository;
+        $this->repository = $orderRepository;
     }
 
     public function getListByCondition($input)
     {
-        $data = $this->orderRepository->getListByCondition($input);
+        $input['DESC'] = 'updatetime';
+        $data = $this->repository->getListByCondition($input);
         return $data;
     }
 
-    public function countByCondition($input)
+    public function create($data)
     {
-        $data = $this->orderRepository->countByCondition($input);
-        return $data;
+        DB::beginTransaction();
+        try{
+            $id = $this->repository->create($data);
+
+            DB::commit();
+            return $id;
+        } catch(\Exception $e) {
+            DB::rollBack();
+            return 0;
+        }
     }
 }

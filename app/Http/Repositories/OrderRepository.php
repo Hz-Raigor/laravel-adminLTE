@@ -8,11 +8,26 @@ use Illuminate\Support\Facades\DB;
 class OrderRepository extends BaseRepository
 {
 
-    public $order;
     public function __construct(Order $order)
     {
         //parent::__construct();
-        $this->order = $order;
-        $this->model = $this->order;
+        $this->model = $order;
+    }
+
+    public function create($data)
+    {
+        $model = $this->model;
+        foreach ($data as $dataKey => $dataValue) {
+            if ($dataKey == 'goods') {
+                continue;
+            }
+            $model->$dataKey = $dataValue;
+        }
+//        var_dump($model);die;
+        $res = $this->model->save();
+//        var_dump($res);die;
+        return $res;
+
     }
 }
+

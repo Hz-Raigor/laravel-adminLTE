@@ -43,7 +43,7 @@ class GuoyaoInterfaceController extends Controller
             $arrIds = array_map('reset',$arrIds);
             $order = $this->orderService->getListByCondition([
                 'fields' => "status,count(*) AS statusNumber",
-                'where_in' => $arrIds,
+                'where_in' => ['key' => 'id','value' => $arrIds],
                 'group' => 'status'
             ]);
             $data['canceled'] = $this->orderService->countByCondition([

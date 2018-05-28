@@ -21,6 +21,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
 {
     Route::get('/login', 'LoginController@index');
     Route::get('/order', 'OrderController@index');
+    Route::get('/order/add', 'OrderController@add');
+//    Route::post('/order/create', 'OrderController@create');
+    Route::match(['get', 'post'], '/order/store','OrderController@store');
+
+    Route::get('/orderBatch', 'OrderBatchController@index');
     Route::get('/guoyao', 'GuoyaoInterfaceController@index');
     Route::get('/guoyao/statistics', 'GuoyaoInterfaceController@statistics');
 });
